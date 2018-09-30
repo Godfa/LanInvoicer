@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LanInvoice.API.Controllers
 {
+    [Route("api/invoices")]
     public class InvoicesController : Controller
     {
+        [HttpGet()]
         public JsonResult GetInvoices()
         {
             return new JsonResult(new List<object>()
