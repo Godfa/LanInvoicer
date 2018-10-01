@@ -10,13 +10,21 @@ namespace LanInvoice.API.Controllers
     public class InvoicesController : Controller
     {
         [HttpGet()]
-        public JsonResult GetInvoices()
+        public IActionResult GetInvoices()
         {
-            return new JsonResult(new List<object>()
+            return new JsonResult(InvoicesDataStore.Current.Invoices);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetInvoice(int id)
+        {
+            var invoiceToReturn = InvoicesDataStore.Current.Invoices.FirstOrDefault(i => i.Id == id);
+            if (invoiceToReturn == null)
             {
-                new { id = 1, Number="60"}, 
-                new { id = 2, Number="61"}
-            });
+                return NotFound();
+            }
+
+            return Ok(invoiceToReturn);
         }
     }
 }

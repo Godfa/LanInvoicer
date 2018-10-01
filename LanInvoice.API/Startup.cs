@@ -34,6 +34,8 @@ namespace LanInvoice.API
                 app.UseExceptionHandler();
             }
 
+            app.UseStatusCodePages();
+
             app.UseMvc();
 
             //app.Run(async (context) =>

@@ -13,7 +13,7 @@ namespace LanInvoice.API.Models
         public string Description { get; set; }
         public decimal Amount { get; set; }
         public virtual List<ExpenseItem> ExpenseItems { get; set; }
-        public virtual LanParty LanPartyId { get; set; }
+        public int LanPartyId { get; set; }
 
     }
 }
