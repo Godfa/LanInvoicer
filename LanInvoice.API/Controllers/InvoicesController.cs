@@ -1,30 +1,29 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace LanInvoice.API.Controllers
 {
-    [Route("api/invoices")]
-    public class InvoicesController : Controller
+  [Route("api/lanparties")]
+  public class InvoicesController : Controller
+  {
+    [HttpGet("{lanPartyId}/invoices")]
+    public IActionResult GetInvoices(int lanPartyId)
     {
-        [HttpGet()]
-        public IActionResult GetInvoices()
-        {
-            return new JsonResult(InvoicesDataStore.Current.Invoices);
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult GetInvoice(int id)
-        {
-            var invoiceToReturn = InvoicesDataStore.Current.Invoices.FirstOrDefault(i => i.Id == id);
-            if (invoiceToReturn == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(invoiceToReturn);
-        }
+      return new JsonResult(InvoicesDataStore.Current.Invoices);
     }
+
+    [HttpGet("{lanPartyId}/invoices/{invoiceId}")]
+    public IActionResult GetInvoice(int lanPartyId, int invoiceId)
+    {
+      var invoiceToReturn = InvoicesDataStore.Current.Invoices.FirstOrDefault(i => i.Id == invoiceId && i.LanPartyId == lanPartyId);
+      if (invoiceToReturn == null)
+      {
+        return NotFound();
+      }
+      return Ok(invoiceToReturn);
+    }
+  }
 }
