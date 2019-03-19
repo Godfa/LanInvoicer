@@ -9,20 +9,20 @@ namespace LanInvoice.API
   public class LanPartiesDataStore
   {
     public static LanPartiesDataStore Current { get; } = new LanPartiesDataStore();
-    public List<LanParty> LanParties { get; set; }
+    public List<LanPartyDto> LanParties { get; set; }
 
     public LanPartiesDataStore()
     {
-      LanParties = new List<LanParty>()
+      LanParties = new List<LanPartyDto>()
       {
-        new LanParty()
+        new LanPartyDto()
         {
           Id = 1,
           Name = "Best LAN ever",
           LanNumber = 50,
-          LanParticipants = new List<User>()
+          LanParticipants = new List<UserDto>()
           {
-            new User()
+            new UserDto()
             {
               UserName = "Epi",
               Id = 1,

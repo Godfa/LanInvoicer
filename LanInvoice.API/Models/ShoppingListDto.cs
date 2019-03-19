@@ -7,7 +7,7 @@ namespace LanInvoice.API.Models
     {
         public int Id { get; set; }
         public int InvoiceId { get; set; }
-        public virtual List<ShoppingListItem> ShoppingListItems { get; set; }
+        public virtual List<ShoppingListItemDto> ShoppingListItems { get; set; }
         public decimal Amount { get; set; }
 
     }

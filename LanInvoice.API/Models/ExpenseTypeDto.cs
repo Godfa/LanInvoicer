@@ -1,6 +1,6 @@
 ﻿namespace LanInvoice.API.Models
 {
-    public enum ExpenseType
+    public enum ExpenseTypeDto
     {
         ShoppingList, 
         Gasoline, 

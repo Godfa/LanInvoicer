@@ -9,26 +9,26 @@ namespace LanInvoice.API
     public class InvoicesDataStore
     {
         public static InvoicesDataStore Current { get; } = new InvoicesDataStore();
-        public List<Invoice> Invoices { get; set; }
+        public List<InvoiceDto> Invoices { get; set; }
 
         public InvoicesDataStore()
         {
-            Invoices = new List<Invoice>()
+            Invoices = new List<InvoiceDto>()
             {
-                new Invoice()
+                new InvoiceDto()
                 {
                     Id = 1, 
                     Name = "Mökkilan50",
                     Amount = 600,
                     Description = "Paras Lani ikinä",
-                    ExpenseItems = new List<ExpenseItem>()
+                    ExpenseItems = new List<ExpenseItemDto>()
                     {
-                        new ExpenseItem()
+                        new ExpenseItemDto()
                         {
                             ExpenseCreditor = 1, 
-                            ExpenseDebitors = new List<User>()
+                            ExpenseDebitors = new List<UserDto>()
                             {
-                                new User()
+                                new UserDto()
                                 {
                                     Email = "epituo@gmail.com",
                                     Id = 1,
@@ -37,27 +37,27 @@ namespace LanInvoice.API
                                     UserRole = (int)RoleType.Admin
                                 }
                             },
-                            ExpenseType = ExpenseType.Personal,
+                            ExpenseType = ExpenseTypeDto.Personal,
                             Id = 1,
                             InvoiceGuid = 1
                         }
                     },
                     LanPartyId = 1
                 },
-                new Invoice()
+                new InvoiceDto()
                 {
                     Id = 2,
                     Name = "Mökkilan40",
                     Amount = 600,
                     Description = "Paskin Lani ikinä",
-                    ExpenseItems = new List<ExpenseItem>()
+                    ExpenseItems = new List<ExpenseItemDto>()
                     {
-                        new ExpenseItem()
+                        new ExpenseItemDto()
                         {
                             ExpenseCreditor = 1,
-                            ExpenseDebitors = new List<User>()
+                            ExpenseDebitors = new List<UserDto>()
                             {
-                                new User()
+                                new UserDto()
                                 {
                                     Email = "kitupelle@gmail.com",
                                     Id = 3,
@@ -66,7 +66,7 @@ namespace LanInvoice.API
                                     UserRole = (int)RoleType.Normal
                                 }
                             },
-                            ExpenseType = ExpenseType.Personal,
+                            ExpenseType = ExpenseTypeDto.Personal,
                             Id = 1,
                             InvoiceGuid = 1
                         }
