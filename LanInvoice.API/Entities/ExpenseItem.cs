@@ -11,6 +11,6 @@ namespace LanInvoice.API.Entities
     public int InvoiceGuid { get; set; }
     public virtual List<User> ExpenseDebitors { get; set; }
     public int ExpenseCreditor { get; set; }
-    public ExpenseType ExpenseType { get; set; }
+    public string ExpenseType { get; set; }
   }
 }

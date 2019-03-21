@@ -21,31 +21,37 @@ namespace LanInvoice.API
       services.AddMvc();
       string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=LanPartyInvoices;Trusted_Connection=True;";
       services.AddDbContext<LanPartyContext>(o => o.UseSqlServer(connectionString));
+      services.AddLogging(logging =>
+      {
+        logging.AddConsole();
+        logging.AddDebug();
+      });
+
 
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggingBuilder loggingBuilder)
-    {
-      loggingBuilder.AddConsole();
-
-      if (env.IsDevelopment())
+      public void Configure(IApplicationBuilder app, IHostingEnvironment env)
       {
-        app.UseDeveloperExceptionPage();
+        //loggingBuilder.AddConsole();
+
+        if (env.IsDevelopment())
+        {
+          app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+          app.UseExceptionHandler();
+        }
+
+        app.UseStatusCodePages();
+
+        app.UseMvc();
+
+        //app.Run(async (context) =>
+        //{
+        //    await context.Response.WriteAsync("Hello World!");
+        //});
       }
-      else
-      {
-        app.UseExceptionHandler();
-      }
-
-      app.UseStatusCodePages();
-
-      app.UseMvc();
-
-      //app.Run(async (context) =>
-      //{
-      //    await context.Response.WriteAsync("Hello World!");
-      //});
     }
   }
-}
